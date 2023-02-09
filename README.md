@@ -1,1 +1,4 @@
-# redux-training
+# Instruments:
+
+redux
+redux-thunk
