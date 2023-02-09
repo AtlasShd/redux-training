@@ -1,4 +1,4 @@
 # Instruments:
 
 redux
-redux-thunk
+redux-saga

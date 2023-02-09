@@ -1,71 +1,64 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { putCashAction, takeCashAction } from './store/actions/cashActions.js';
 import {
-  addCustomerAction,
-  deleteCustomerAction,
-} from './store/actions/customersActions.js';
-import { fetchCustomers } from './store/asyncActions/customersAsyncActions.js';
+  incrementAction,
+  decrementAction,
+  incrementAsyncAction,
+  decrementAsyncAction,
+} from './store/actions/countActions.js';
+import {
+  deleteUserAction,
+  fetchUsersAsyncAction,
+} from './store/actions/usersActions.js';
 
 function App() {
   const dispatch = useDispatch();
   const {
-    cash: { cash },
-    customers: { customers },
+    count: { count },
+    users: { users },
   } = useSelector((state) => state);
-
-  const putCash = (value) => {
-    dispatch(putCashAction(value));
-  };
-
-  const takeCash = (value) => {
-    dispatch(takeCashAction(value));
-  };
-
-  const addCustomer = (name) => {
-    const value = {
-      name,
-      id: Date.now(),
-    };
-    dispatch(addCustomerAction(value));
-  };
-
-  const deleteCustomer = (value) => {
-    dispatch(deleteCustomerAction(value));
-  };
 
   return (
     <div className="container">
       <div className="buttons">
-        <button className="button" onClick={() => putCash(+prompt())}>
-          Put cash
+        <button className="button" onClick={() => dispatch(incrementAction(1))}>
+          Increment
         </button>
-        <button className="button" onClick={() => takeCash(+prompt())}>
-          Take cash
+        <button
+          className="button"
+          onClick={() => dispatch(incrementAsyncAction(1))}>
+          Async increment
         </button>
-        <button className="button" onClick={() => addCustomer(prompt())}>
-          Add customer
+        <button className="button" onClick={() => dispatch(decrementAction(1))}>
+          Decrement
         </button>
-        <button className="button" onClick={() => dispatch(fetchCustomers())}>
-          Fetch customers
+        <button
+          className="button"
+          onClick={() => dispatch(decrementAsyncAction(1))}>
+          Async decrement
+        </button>
+        <button
+          className="button"
+          onClick={() => dispatch(fetchUsersAsyncAction())}>
+          Fetch users
         </button>
       </div>
-      <div className="cash">{cash}</div>
-      {customers.length > 0 ? (
+      <div className="count">{count}</div>
+
+      {users.length > 0 ? (
         <div>
-          {customers.map((customer, index) => (
+          {users.map((user, index) => (
             <div
               key={index}
-              className="customer"
-              onClick={() => deleteCustomer(customer.id)}
-            >
-              {customer.name}
+              className="user"
+              onClick={() => dispatch(deleteUserAction(user.id))}>
+              {user.name}
             </div>
           ))}
         </div>
       ) : (
-        <div className="no-customers">There are no customers!</div>
+        <div className="no-users">There are no users!</div>
       )}
     </div>
   );
