@@ -1,37 +1,51 @@
 {
+  "root": true,
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  },
   "env": {
-      "node": true,
-      "es2022": true,
-      "jest": true,
-      "browser": true
+    "node": true,
+    "es2022": true,
+    "jest": true,
+    "browser": true
   },
   "extends": [
-      "airbnb-base",
-      "plugin:react/recommended"
+    "airbnb-base",
+    "airbnb-typescript",
+    "plugin:react/recommended",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
     "import",
     "jsx-a11y",
     "react",
-    "react-hooks"
+    "react-hooks",
+    "@typescript-eslint"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": "latest",
-      "sourceType": "module"
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
   },
-  "ignorePatterns": ["/dist/", "/gulp/", "/node_modules/"],
+  "ignorePatterns": ["/node_modules/"],
   "rules": {
-    // "no-console":"warn",
-    // "no-underscore-dangle":"warn",
-    // "class-methods-use-this":"warn",
-    // "no-param-reassign": "warn",
-    // "no-continue":"warn",
-    // "react/prop-types": "warn",
-    // "no-restricted-globals": "warn",
-    "max-len":"warn",
+    // "@typescript-eslint/ban-ts-comment": "off",
+    // "react/react-in-jsx-scope": "off",
+    // "semi": [2, "always"],
+    "max-len": ["warn", { "code": 120 }],
     "no-trailing-spaces": "warn",
     "no-tabs":"warn",
     "indent":"warn",
@@ -40,6 +54,7 @@
     "default-param-last": "off",
     "linebreak-style": "off",
     "import/no-extraneous-dependencies": "warn",
-    "import/prefer-default-export": "warn"
+    "import/prefer-default-export": "warn",
+    "no-param-reassign":"off" // for redux toolkit
   }
 }
