@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server1",
+      "body": "typicode1"
+    },
+    {
+      "id": 4,
+      "title": "asd",
+      "body": "typicode4"
+    },
+    {
+      "id": 5,
+      "title": "json-server5",
+      "body": "typicode5"
+    },
+    {
+      "id": 6,
+      "title": "json-server6",
+      "body": "typicode6"
+    },
+    {
+      "id": 10,
+      "title": "json-server10",
+      "body": "typicode10"
+    },
+    {
+      "title": "qweqwe",
+      "body": "",
+      "id": 16
+    },
+    {
+      "title": "zxc",
+      "body": "",
+      "id": 19
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
